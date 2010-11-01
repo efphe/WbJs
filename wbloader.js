@@ -11,6 +11,10 @@
  */
 
 function wbDetectLanguage(langdefault) {
+  /* 
+   * I also check if detected language is compatible,
+   * ie it,fr,de,en,es,pt 
+   */
   try {
     a= 1/0;
   } catch(e) {return langdefault};
