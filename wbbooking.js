@@ -24,5 +24,7 @@
  *  defland  ~> 'it'
  *  button   ~> ????
  */
-function initWuBook(dates, deletion, deflang, button) {
+__wblcode__= 1213394817;
+function initWuBook(lcode, dates, deletion, deflang, button) {
+  __wblcode__= lcode;
 }

@@ -4,11 +4,29 @@
  *
  */
 
+function wbLoadScript(sScriptSrc, oCallback) {
+  var oHead = document.getElementById('head')[0];
+  var oScript = document.createElement('script');
+  oScript.type = 'text/javascript';
+  oScript.src = sScriptSrc;
+  // most browsers
+  oScript.onload = oCallback;
+  // IE 6 & 7
+  oScript.onreadystatechange = function() {
+    if (this.readyState == 'complete') {
+    oCallback();
+    };
+  }
+  oHead.appendChild(oScript);
+}
+
+
 /* 
  * I try to detect the browser language,
  * and if I can't, I return the passed
  * arg
  */
+
 
 function wbDetectLanguage(langdefault) {
   /* 
@@ -27,7 +45,12 @@ function wbDetectLanguage(langdefault) {
  * Args passed are passed to initWuBook() (see
  * inside wbboking.js what's possible to do)
  */
-function wbLoadInit(arg1, arg2, langdefault, arg3....) {
+function wbLoadInit(lcode, dates, deletion, deflang, buttton) {
   /* try to get the better language */
-  var wblang= wbDetectLanguage(langdefault);
+  var wblang= wbDetectLanguage(deflang || 'it');
+  wbLoadScript('https://wubook.net/js/wbk.js', function() {
+    $(document).ready(function() {
+      initWuBook(lcode, dates, deletion, deflang, buttton);
+    });
+  });
 }

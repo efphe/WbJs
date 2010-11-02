@@ -5,6 +5,7 @@
     <script src="http://localhost:6587/css/wu_cals.js"></script>
     <link type="text/css" rel="stylesheet" href="http://localhost:6587/css/wbredcal.css"></link>
     <script>
+      __wblcode__= 1213394817;
       var wbgreen= '#caef96';
       var delrunning= false;
       function WbDel() {
@@ -46,8 +47,7 @@
           $('#wbrmail').css('background-color', wbgreen);
         if (!go) return;
         $('#wbdelgear').show();
-        var wblcode= 1213394817;
-        var u= 'https://wubook.net/acts/jdbook/' + wblcode + "/" + wbrcode + "/" + wbrmail + "/";
+        var u= 'https://wubook.net/acts/jdbook/' + __wblcode__ + "/" + wbrcode + "/" + wbrmail + "/";
         if (u == $('#wbdelresimg').attr('src')) {
           $('#wbdelgear').hide();
           $('#wbdelres').show();
