@@ -1,185 +1,21 @@
 <html>
   <head>
-    <script src="http://localhost:6587/js/jquery.js"></script>
-    <script src="http://localhost:6587/js/wu_cals.js"></script>
-    <script src="http://localhost:6587/css/wu_cals.js"></script>
-    <link type="text/css" rel="stylesheet" href="http://localhost:6587/css/wbredcal.css"></link>
-    <script>
-      __wblcode__= 1213394817;
-      var wbgreen= '#caef96';
-      var delrunning= false;
-      function WbDel() {
-        $('#__wbor_reservation__').fadeOut(400, function() {
-          $('#__wbor_cancel__').fadeIn(100);
-        });
-      }
-      function WbRes() {
-        $('#__wbor_cancel__').fadeOut(400, function() {
-          $('#__wbor_reservation__').fadeIn(100);
-        });
-      }
-      function WbOr() {
-      }
-      function WbDelReservation() {
-        if (delrunning) return;
-        delrunning= true;
-        try {
-          _WbDelReservation();
-        } catch(e) {};
-        delrunning= false;
-      }
-      function _WbDelReservation() {
-        $('#wbdelres').hide();
-        var go= true;
-        var wbrcode= $('#wbrcode').val();
-        if (!wbrcode) {
-          $('#wbrcode').css('background-color', '#f9d1d1');
-          go= false;
-        }
-        else
-          $('#wbrcode').css('background-color', wbgreen);
-        var wbrmail= $('#wbrmail').val();
-        if (!wbrmail) {
-          $('#wbrmail').css('background-color', '#f9d1d1');
-          go= false;
-        }
-        else
-          $('#wbrmail').css('background-color', wbgreen);
-        if (!go) return;
-        $('#wbdelgear').show();
-        var u= 'https://wubook.net/acts/jdbook/' + __wblcode__ + "/" + wbrcode + "/" + wbrmail + "/";
-        if (u == $('#wbdelresimg').attr('src')) {
-          $('#wbdelgear').hide();
-          $('#wbdelres').show();
-          $(this).fadeIn();
-          return;
-        }
-        $('#wbdelresimg').one('load', function() {
-          $('#wbdelgear').hide();
-          $('#wbdelres').show();
-          $(this).fadeIn();
-        }).attr('src', u).each(function() {if($(this).complete) $(this).trigger('load');});
-      }
+    <!--
+      File originali:
+       wbloader.js -> wbloader.js.uncompressed.js
+       wbgen.js /js/wbk/wbgen.js
 
-    </script>
+       ci sono ovviamente jquery e anche wu_cals.js
+
+       tutto viene compresse in /js/wbk/wbk.js (/js/wbk/wbk.jgz compresso per !IE)
+    -->
   </head>
   <body>
-    <div id="__wbor__" style="width:200px;padding:2px;border:3px solid gray;height:auto;overflow:auto;font-size:12px">
-      <div id="__wbor_inside__" style="border:1px solid gray;padding:4px;overflow:auto">
-        <b style="margin:4px;font-size:14px">Online reception</b>
-
-        <div id="__wbor_reservation__">
-          <table style="font-size:12px;margin:4px">
-            <tr>
-              <td colspan="3">
-                <img src="https://wubook.net/imgs/default/lbprice.png"></img>
-                <b>Best price granted</b>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                Arrival:
-              </td>
-              <td>
-                <input type="text" style="width:90px;height:20px" id="wbdfrom"></input>
-              </td>
-              <td>
-                <a style="border:none;font-decoration:none" href="javascript:void(0)" onclick="fPopCalendar('wbdfrom', '', '', -150)">
-                  <img style="border:none;font-decoration:none" src="http://wubook.net/imgs/default/bookcal.gif"></img>
-                </a>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                Nights:
-              </td>
-              <td colspan="2">
-                <select>
-                  <option value="1">1</option>
-                  <option value="2">2</option>
-                  <option value="3" selected="selected">3</option>
-                  <option value="4">4</option>
-                  <option value="5">5</option>
-                  <option value="6">6</option>
-                  <option value="7">7</option>
-                  <option value="8">8</option>
-                  <option value="9">9</option>
-                  <option value="10">10</option>
-                  <option value="11">11</option>
-                  <option value="12">12</option>
-                  <option value="13">13</option>
-                  <option value="14">14</option>
-                  <option value="15">15</option>
-                  <option value="16">16</option>
-                  <option value="17">17</option>
-                  <option value="18">18</option>
-                  <option value="19">19</option>
-                  <option value="20">20</option>
-                  <option value="21">21</option>
-                </select>
-              </td> 
-            </tr>
-          </table>
-          <div style="margin:3px">
-            <a style="color:blue;margin:2px" href="#" onclick="WbOr()">Check prices and availability</a>
-          </div>
-          <div style="margin:3px">
-            <a style="color:blue;margin:2px" href="#" onclick="WbDel()">Delete a reservation</a>
-          </div>
-        </div>
-
-        <div id="__wbor_cancel__" style="display:none;margin-top:4px">
-          Please, enter the reservation code and your
-          email address:
-          <table style="font-size:12px;margin:6px">
-            <tr>
-              <td>
-                Code:
-              </td>
-              <td>
-                <input type="text" style="width:120px;height:20px" id="wbrcode"></input>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                Mail:
-              </td>
-              <td>
-                <input type="text" style="width:120px;height:20px" id="wbrmail"></input>
-              </td>
-            </tr>
-            <tr style="display:none" id="wbdelgear">
-              <td colspan="2">
-                <img src="https://wubook.net/imgs/default/gear_running.gif"></img>
-              </td>
-            </tr>
-            <tr style="display:none" id="wbdelres">
-              <td colspan="2">
-                <img id="wbdelresimg"></img>
-              </td>
-            </tr>
-            <tr>
-              <td colspan="2">
-                <div style="margin:3px">
-                  <a href="javascript:void(0)" style="color:blue" onclick="WbDelReservation()">Cancel the reservation</a><br/>
-                </div>
-                <div style="margin:3px">
-                  <a href="javascript:void(0)" style="color:blue" onclick="WbRes()">Prices and availability</a>
-                </div>
-              </td>
-            </tr>
-          </table>
-        </div>
-
-        <div style="margin-top:8px;font-size:10px">
-          <a style="border:none;font-decoration:none;float:right" href="http://wubook.net/">
-            <img style="border:none;font-decoration:none;margin-top:4px" src="http://wubook.net/imgs/share/lwu.png"></img>
-          </a>
-          Direct reservation with
-          full customer care and
-          best price granted
-        </div>
-      </div>
-    </div>
+    <script src="https://wubook.net/js/wbk/wbloader.js"></script>
+    <script>
+      wbLoadInit(false);
+    </script>
+    <link type="text/css" rel="stylesheet" href="https://wubook.net/css/wbkc.css"/>
+    <div id="__wbor__"></div>
   </body>
 </html>

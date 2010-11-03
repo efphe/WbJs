@@ -5,7 +5,7 @@
  */
 
 function wbLoadScript(sScriptSrc, oCallback) {
-  var oHead = document.getElementById('head')[0];
+  var oHead = document.getElementById('head');
   var oScript = document.createElement('script');
   oScript.type = 'text/javascript';
   oScript.src = sScriptSrc;
@@ -45,10 +45,12 @@ function wbDetectLanguage(langdefault) {
  * Args passed are passed to initWuBook() (see
  * inside wbboking.js what's possible to do)
  */
+_wbfile= 'https://wubook.net/js/wbk.js';
+_wbfile= 'http://localhost:6587/js/wbk/wbk.js';
 function wbLoadInit(lcode, dates, deletion, deflang, buttton) {
   /* try to get the better language */
   var wblang= wbDetectLanguage(deflang || 'it');
-  wbLoadScript('https://wubook.net/js/wbk.js', function() {
+  wbLoadScript(_wbfile, function() {
     $(document).ready(function() {
       initWuBook(lcode, dates, deletion, deflang, buttton);
     });
